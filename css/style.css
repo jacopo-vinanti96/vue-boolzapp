@@ -50,7 +50,8 @@
 /* Main-app */
 #main-app {
   height: 100%;
-  width: 1200px;
+  min-width: 950px;
+  width: 80%;
   background-color: white;
   margin: auto;
   display: flex;
@@ -58,7 +59,7 @@
 
 /* Aside */
 .main-app__aside {
-  width: 400px;
+  width: 35%;
   flex-shrink: 0;
   overflow: hidden;
   display: flex;
@@ -156,7 +157,8 @@
 
 /* Main */
 .main-app__main {
-  width: 100%;
+  width: 65%;
+  background-image: url(../img/mine.jpg);
 }
 
 .main-app__main .header__avatar {
