@@ -239,13 +239,14 @@
   align-items: center;
 }
 
-.message-bar i {
+.btn--msg-bar {
   color: #6B7376;
-  font-size: 20px;
+  font-size: 22px;
   padding: 0 30px;
 }
 
 .user-msg {
   padding: 12px 0;
   width: 100%;
+  font-size: 16px;
 }
