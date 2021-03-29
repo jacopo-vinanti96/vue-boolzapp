@@ -64,6 +64,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  border-right: 1px solid lightgrey;
 }
 
 /* Header */
@@ -161,6 +162,32 @@
   background-image: url(../img/mine.jpg);
 }
 
+/* Header */
 .main-app__main .header__avatar {
   margin-right: 12px;
+}
+
+/* Messages-window */
+.messages-window {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.wrapper {
+  width: 100%;
+}
+
+.msg {
+  min-width: 42%;
+  width: min-content;
+}
+
+.sent {
+  background-color: #D5F9BA;
+  float: right;
+}
+
+.received {
+  background-color: #fff;
+  float: left;
 }

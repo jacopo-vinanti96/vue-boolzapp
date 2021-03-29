@@ -45,9 +45,9 @@
       <main class="main-app__main">
         <header class="main-app__header">
           <div class="header__user">
-            <img class="header__avatar" src="img/avatar_8.jpg" alt="user avatar">
-            <span>Nome Cognome <br>
-              <span class="text--sub text--contact-access">Data accesso</span>
+            <img class="header__avatar" v-bind:src="'img/avatar' + contacts[0].avatar + '.jpg'" v-bind:alt="contacts[0].name">
+            <span>{{contacts[0].name}}<br>
+              <span class="text--sub text--contact-access">Ultimo accesso oggi alle</span>
             </span>
           </div>
           <div class="header__actions">
@@ -57,7 +57,9 @@
           </div>
         </header>
         <div class="messages-window">
-
+          <div class="wrapper" v-for="msg in contacts[0].messages">
+            <div class="msg" v-bind:class="msg.status == 'sent'? 'sent' : 'received'">{{msg.message}}</div>
+          </div>
         </div>
         <div class="message-bar">
 
