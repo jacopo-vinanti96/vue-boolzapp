@@ -24,6 +24,12 @@
   font-size: 18px;
 }
 
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
 .text--sub {
   font-size: 14px;
   font-weight: 500;
@@ -35,6 +41,15 @@
 
 .text--notifications {
   color: #466B7C;
+}
+
+.text--msg-date {
+  color: #61696C;
+  font-size: 10px;
+  font-weight: 500;
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
 }
 
 /* BODY */
@@ -160,34 +175,54 @@
 .main-app__main {
   width: 65%;
   background-image: url(../img/mine.jpg);
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  align-items: flex-start;
 }
 
 /* Header */
+.main-app__main .main-app__header {
+  width: 100%;
+  flex-shrink: 0;
+}
+
 .main-app__main .header__avatar {
   margin-right: 12px;
 }
 
 /* Messages-window */
 .messages-window {
-  display: flex;
-  flex-wrap: wrap;
+  padding: 60px 0;
+  overflow-y: scroll;
+  height: 100%;
+  width: 100%;
 }
 
 .wrapper {
   width: 100%;
 }
 
+.wrapper:not(:last-child) {
+  margin-bottom: 15px;
+}
+
 .msg {
-  min-width: 42%;
-  width: min-content;
+  min-width: max-content;
+  width: 30%;
+  padding: 15px 12px 18px;
+  border-radius: 8px;
+  position: relative;
 }
 
 .sent {
   background-color: #D5F9BA;
   float: right;
+  margin-right: 10%;
 }
 
 .received {
   background-color: #fff;
   float: left;
+  margin-left: 10%;
 }

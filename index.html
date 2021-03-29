@@ -57,8 +57,8 @@
           </div>
         </header>
         <div class="messages-window">
-          <div class="wrapper" v-for="msg in contacts[0].messages">
-            <div class="msg" v-bind:class="msg.status == 'sent'? 'sent' : 'received'">{{msg.message}}</div>
+          <div class="wrapper clearfix" v-for="msg in contacts[0].messages">
+            <div class="msg" v-bind:class="msg.status == 'sent'? 'sent' : 'received'">{{msg.message}}<span class="text--msg-date">{{msg.date}}</span></div>
           </div>
         </div>
         <div class="message-bar">
