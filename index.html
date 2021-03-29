@@ -15,36 +15,42 @@
     <div id="main-app">
       <aside class="main-app__aside">
         <header class="main-app__header">
-          <div class="user">
+          <div class="header__user">
             <img class="header__avatar" src="img/avatar_io.jpg" alt="user avatar">
             <span>Nome Cognome</span>
           </div>
-          <div class="actions">
+          <div class="header__actions">
             <i class="btn btn--action fas fa-circle-notch"></i>
             <i class="btn btn--action fas fa-comment-alt"></i>
             <i class="btn btn--action fas fa-ellipsis-v"></i>
           </div>
         </header>
-        <div class="notifications">
-
+        <div class="aside__notifications">
+          <i class="fas fa-bell-slash"></i>
+          <span>Ricevi notifiche di nuovi messaggi <br>
+            <a href="#" class="text--sub text--notifications">Attiva notifiche desktop</a>
+          </span>
         </div>
-        <div class="contact-search">
-
+        <div class="aside__contact-search">
+          <label for="search-bar" class="btn btn--search-bar"><i class="fas fa-search"></i></label>
+          <input id="search-bar" class="search-input text--sub" type="text" name="search-bar" placeholder="Cerca o inizia una nuova chat" value="">
         </div>
-        <div class="contacts">
-
+        <div class="aside__contacts">
+          <div v-for="contact in contacts" class="contact-box">
+            <img class="contact-img" v-bind:src="'img/avatar' + contact.avatar + '.jpg'" v-bind:alt="contact.name">
+            <span>{{contact.name}}</span>
+          </div>
         </div>
       </aside>
       <main class="main-app__main">
         <header class="main-app__header">
-          <div class="user">
+          <div class="header__user">
             <img class="header__avatar" src="img/avatar_8.jpg" alt="user avatar">
             <span>Nome Cognome <br>
-              <span class="text--contact-access">Data accesso</span>
+              <span class="text--sub text--contact-access">Data accesso</span>
             </span>
-
           </div>
-          <div class="actions">
+          <div class="header__actions">
             <i class="btn btn--action fas fa-search"></i>
             <i class="btn btn--action fas fa-paperclip"></i>
             <i class="btn btn--action fas fa-ellipsis-v"></i>
