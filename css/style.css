@@ -18,6 +18,10 @@
   font-size: 18px;
 }
 
+.text--contact-access {
+  color: #61696C;
+}
+
 /* BODY */
 .body__container {
   height: 100vh;
@@ -51,13 +55,21 @@
   padding: 8px;
 }
 
+.user {
+  display: flex;
+  align-items: center;
+}
+
 .header__avatar {
   width: 50px;
   border-radius: 50%;
-  vertical-align: middle;
 }
 
 /* Main */
 .main-app__main {
   width: 100%;
+}
+
+.main-app__main .header__avatar {
+  margin-right: 12px;
 }
