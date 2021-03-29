@@ -84,6 +84,12 @@ const app = new Vue({
     ],
   },
   methods: {
-
+    initActive(){
+      let contactBoxes = document.getElementsByClassName('contact-box');
+      contactBoxes[0].classList.add('active');
+    }
+  },
+  mounted() {
+    this.initActive();
   }
 })

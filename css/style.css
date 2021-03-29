@@ -55,11 +55,12 @@
 /* BODY */
 .body__container {
   height: 100vh;
-  background: linear-gradient(0deg,
+  background: linear-gradient(
+    0deg,
     #DBDBD2 85%,
     #009688 84%
-    );
-    padding: 30px 0;
+  );
+  padding: 30px 0;
 }
 
 /* Main-app */
@@ -161,6 +162,11 @@
 
 .contact-box:not(:last-child){
   border-bottom: 1px solid #EAEAEA;
+}
+
+.contact-box:hover,
+.contact-box.active {
+  background-color: #EAEAEA;
 }
 
 .contact-img {
