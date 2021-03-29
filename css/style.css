@@ -179,6 +179,7 @@
   flex-wrap: wrap;
   overflow: hidden;
   align-items: flex-start;
+  position: relative;
 }
 
 /* Header */
@@ -193,7 +194,7 @@
 
 /* Messages-window */
 .messages-window {
-  padding: 60px 0;
+  padding: 60px 0 135px;
   overflow-y: scroll;
   height: 100%;
   width: 100%;
@@ -225,4 +226,26 @@
   background-color: #fff;
   float: left;
   margin-left: 10%;
+}
+
+/* Message-bar */
+.message-bar {
+  background-color: #F3EEEA;
+  padding: 5px 0;
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.message-bar i {
+  color: #6B7376;
+  font-size: 20px;
+  padding: 0 30px;
+}
+
+.user-msg {
+  padding: 12px 0;
+  width: 100%;
 }
