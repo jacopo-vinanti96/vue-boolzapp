@@ -1,9 +1,63 @@
+/* Reset */
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-#main-app {
+/* Common */
+.btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
 
+.btn--action {
+  color: #B1B1B1;
+  margin: 5px;
+  font-size: 18px;
+}
+
+/* BODY */
+.body__container {
+  height: 100vh;
+  background: linear-gradient(0deg,
+    #DBDBD2 85%,
+    #009688 84%
+    );
+    padding: 30px 0;
+}
+
+/* Main-app */
+#main-app {
+  height: 100%;
+  width: 1200px;
+  background-color: white;
+  margin: auto;
+  display: flex;
+}
+
+/* Aside */
+.main-app__aside {
+  width: 400px;
+  flex-shrink: 0;
+}
+
+.main-app__header {
+  background-color: #EAEAEA;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+}
+
+.header__avatar {
+  width: 50px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+/* Main */
+.main-app__main {
+  width: 100%;
 }

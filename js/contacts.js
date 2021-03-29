@@ -79,3 +79,9 @@ contacts: [
         ],
     },
 ]
+
+const app = new Vue({
+  el: '#main-app',
+  data: {
+  },
+})
