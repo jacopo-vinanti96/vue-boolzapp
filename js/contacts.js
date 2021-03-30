@@ -108,15 +108,17 @@ const app = new Vue({
       this.receiveMsg();
     },
     receiveMsg() {
+      let tempIndex = this.activeIndex;
+      let tempContact = this.contactActive;
       setTimeout( () => {
-        this.contacts[this.activeIndex].accessDate = 'Sta scrivendo...';
+        this.contacts[tempIndex].accessDate = 'Sta scrivendo...';
         this.$forceUpdate();
       }, 2000);
       setTimeout( () => {
         let now = dayjs().format('D/MM/YYYY HH:mm:ss');
         let nowHH = dayjs().format('HH:mm:ss');
-        this.contacts[this.activeIndex].accessDate = `Ultimo accesso oggi alle ${nowHH}`;
-        this.contactActive.messages.push({
+        this.contacts[tempIndex].accessDate = `Ultimo accesso oggi alle ${nowHH}`;
+        tempContact.messages.push({
           date: now,
           message: 'Ok',
           status: 'received'
