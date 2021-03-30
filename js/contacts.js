@@ -82,7 +82,6 @@ const app = new Vue({
             ],
         },
     ],
-    activeIndex: null,
     chatMsgInput: '',
     contactActive: null,
   },
@@ -94,16 +93,11 @@ const app = new Vue({
         }
       return random;
     },
+    searchContact() {
+      console.log(this.searchVal);
+    },
     setActive(index) {
-      let contactBoxes = document.getElementsByClassName('contact-box');
-      if ( contactBoxes[index].classList.contains('active') == false ) {
-        if ( this.contactActive != null ) {
-          document.getElementsByClassName('active')[0].classList.remove('active');
-        }
-        contactBoxes[index].classList.add('active');
-      }
       this.contactActive = this.contacts[index];
-      this.activeIndex = index;
     },
     sendMsg() {
       this.contactActive.messages.push({
@@ -115,16 +109,15 @@ const app = new Vue({
       this.receiveMsg();
     },
     receiveMsg() {
-      let tempIndex = this.activeIndex;
       let tempContact = this.contactActive;
       setTimeout( () => {
-        this.contacts[tempIndex].accessDate = 'Sta scrivendo...';
+        tempContact.accessDate = 'Sta scrivendo...';
         this.$forceUpdate();
       }, 2000);
       setTimeout( () => {
         let now = dayjs().format('D/MM/YYYY HH:mm:ss');
         let nowHH = dayjs().format('HH:mm');
-        this.contacts[tempIndex].accessDate = `Ultimo accesso oggi alle ${nowHH}`;
+        tempContact.accessDate = `Ultimo accesso oggi alle ${nowHH}`;
         tempContact.messages.push({
           date: now,
           message: 'Ok',

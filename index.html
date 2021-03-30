@@ -37,7 +37,7 @@
           <input id="search-bar" class="search-input text--sub" type="text" name="search-bar" placeholder="Cerca o inizia una nuova chat" value="">
         </div>
         <div class="aside__contacts">
-          <div v-for="(contact, i) in contacts" @click="setActive(i)" class="contact-box">
+          <div v-for="(contact, i) in contacts" @click="setActive(i)" class="contact-box" :class="{'active': contactActive == i}">
             <img class="contact-img" v-bind:src="'img/avatar' + contact.avatar + '.jpg'" v-bind:alt="contact.name">
             <span>{{contact.name}}</span>
           </div>
@@ -48,7 +48,7 @@
           <div class="header__user">
             <img class="header__avatar" v-bind:src="'img/avatar' + contactActive.avatar + '.jpg'" v-bind:alt="contactActive.name">
             <span>{{contactActive.name}}<br>
-              <span class="text--sub text--contact-access" :key="contacts[activeIndex].accessDate">{{contacts[activeIndex].accessDate}}</span>
+              <span class="text--sub text--contact-access" :key="contactActive.accessDate">{{contactActive.accessDate}}</span>
             </span>
           </div>
           <div class="header__actions">
