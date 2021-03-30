@@ -87,6 +87,13 @@ const app = new Vue({
     contactActive: null,
   },
   methods: {
+    randomNum(min, max) {
+      let random = Math.floor( Math.random() * (max - min + 1) ) + min;
+        if ( random < 10 ) {
+          random = '0' + random;
+        }
+      return random;
+    },
     setActive(index) {
       let contactBoxes = document.getElementsByClassName('contact-box');
       if ( contactBoxes[index].classList.contains('active') == false ) {
@@ -116,7 +123,7 @@ const app = new Vue({
       }, 2000);
       setTimeout( () => {
         let now = dayjs().format('D/MM/YYYY HH:mm:ss');
-        let nowHH = dayjs().format('HH:mm:ss');
+        let nowHH = dayjs().format('HH:mm');
         this.contacts[tempIndex].accessDate = `Ultimo accesso oggi alle ${nowHH}`;
         tempContact.messages.push({
           date: now,
@@ -127,8 +134,17 @@ const app = new Vue({
     }
   },
   mounted() {
+    let nowHH = parseInt( dayjs().format('HH') );
+    let nowMM = parseInt( dayjs().format('mm') );
     for ( index in this.contacts ) {
-      this.contacts[index].accessDate = 'offline';
+      let randomHH = this.randomNum(0, nowHH);
+      let randomMM;
+      if ( parseInt( randomHH ) == nowHH ) {
+        randomMM = this.randomNum(0, nowMM);
+      } else {
+        randomMM = this.randomNum(0, 60);
+      }
+      this.contacts[index].accessDate = `Ultimo accesso oggi alle ${randomHH}:${randomMM}`;
     }
   }
 })
