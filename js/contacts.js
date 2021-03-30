@@ -82,14 +82,18 @@ const app = new Vue({
             ],
         },
     ],
+    contactActive: null
   },
   methods: {
-    initActive(){
+    setActive(index) {
       let contactBoxes = document.getElementsByClassName('contact-box');
-      contactBoxes[0].classList.add('active');
+      if ( contactBoxes[index].classList.contains('active') == false ) {
+        if ( this.contactActive != null ) {
+          document.getElementsByClassName('active')[0].classList.remove('active');
+        }
+        contactBoxes[index].classList.add('active');
+      }
+      this.contactActive = this.contacts[index];
     }
   },
-  mounted() {
-    this.initActive();
-  }
 })

@@ -36,17 +36,17 @@
           <input id="search-bar" class="search-input text--sub" type="text" name="search-bar" placeholder="Cerca o inizia una nuova chat" value="">
         </div>
         <div class="aside__contacts">
-          <div v-for="contact in contacts" class="contact-box">
+          <div v-for="(contact, i) in contacts" @click="setActive(i)" class="contact-box">
             <img class="contact-img" v-bind:src="'img/avatar' + contact.avatar + '.jpg'" v-bind:alt="contact.name">
             <span>{{contact.name}}</span>
           </div>
         </div>
       </aside>
       <main class="main-app__main">
-        <header class="main-app__header">
+        <header v-if="contactActive != null" class="main-app__header">
           <div class="header__user">
-            <img class="header__avatar" v-bind:src="'img/avatar' + contacts[0].avatar + '.jpg'" v-bind:alt="contacts[0].name">
-            <span>{{contacts[0].name}}<br>
+            <img class="header__avatar" v-bind:src="'img/avatar' + contactActive.avatar + '.jpg'" v-bind:alt="contactActive.name">
+            <span>{{contactActive.name}}<br>
               <span class="text--sub text--contact-access">Ultimo accesso oggi alle</span>
             </span>
           </div>
@@ -56,12 +56,12 @@
             <i class="btn btn--action fas fa-ellipsis-v"></i>
           </div>
         </header>
-        <div class="messages-window">
-          <div class="wrapper clearfix" v-for="msg in contacts[0].messages">
+        <div v-if="contactActive != null" class="messages-window">
+          <div class="wrapper clearfix" v-for="msg in contactActive.messages">
             <div class="msg" v-bind:class="msg.status == 'sent'? 'sent' : 'received'">{{msg.message}}<span class="text--msg-date">{{msg.date}}</span></div>
           </div>
         </div>
-        <div class="message-bar">
+        <div v-if="contactActive != null" class="message-bar">
           <i class="btn btn--msg-bar far fa-smile"></i>
           <input class="user-msg" type="text" name="user-msg" placeholder="Scrivi un messaggio" value="">
           <i class="btn btn--msg-bar fas fa-microphone"></i>
