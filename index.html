@@ -48,7 +48,7 @@
           <div class="header__user">
             <img class="header__avatar" v-bind:src="'img/avatar' + contactActive.avatar + '.jpg'" v-bind:alt="contactActive.name">
             <span>{{contactActive.name}}<br>
-              <span class="text--sub text--contact-access">Ultimo accesso oggi alle</span>
+              <span class="text--sub text--contact-access">{{contactAccess}}</span>
             </span>
           </div>
           <div class="header__actions">

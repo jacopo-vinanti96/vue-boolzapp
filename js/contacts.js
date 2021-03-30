@@ -83,6 +83,7 @@ const app = new Vue({
         },
     ],
     contactActive: null,
+    contactAccess: 'Ultimo accesso oggi alle',
     chatMsgInput: ''
   },
   methods: {
@@ -101,7 +102,21 @@ const app = new Vue({
         date: dayjs().format('D/MM/YYYY HH:mm:ss'),
         message: this.chatMsgInput,
         status: 'sent'
-      })
+      });
+      this.chatMsgInput = '';
+      setTimeout( () => {
+          this.contactAccess = 'Sta scrivendo...'
+      }, 2000);
+      setTimeout( () => {
+        let now = dayjs().format('D/MM/YYYY HH:mm:ss');
+        let nowHH = dayjs().format('HH:mm:ss');
+        this.contactAccess = `Ultimo accesso oggi alle ${nowHH}`
+        this.contactActive.messages.push({
+          date: now,
+          message: 'Ok',
+          status: 'received'
+        });
+      }, 4000)
     }
   },
 })
