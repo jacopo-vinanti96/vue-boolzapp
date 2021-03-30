@@ -83,8 +83,8 @@ const app = new Vue({
         },
     ],
     contactActive: null,
-    contactAccess: 'Ultimo accesso oggi alle',
-    chatMsgInput: ''
+    chatMsgInput: '',
+    activeIndex: null
   },
   methods: {
     setActive(index) {
@@ -96,6 +96,7 @@ const app = new Vue({
         contactBoxes[index].classList.add('active');
       }
       this.contactActive = this.contacts[index];
+      this.activeIndex = index;
     },
     sendMsg() {
       this.contactActive.messages.push({
@@ -104,19 +105,32 @@ const app = new Vue({
         status: 'sent'
       });
       this.chatMsgInput = '';
+      this.receiveMsg();
+    },
+    receiveMsg() {
       setTimeout( () => {
-          this.contactAccess = 'Sta scrivendo...'
+        for ( index in this.contacts ) {
+          if ( this.contactActive.name == this.contacts[index].name ) {
+            this.contacts[index].accessDate = 'Sta scrivendo...';
+            this.activeIndex = index;
+            setTimeout( () => {
+              let now = dayjs().format('D/MM/YYYY HH:mm:ss');
+              let nowHH = dayjs().format('HH:mm:ss');
+              this.contacts[this.activeIndex].accessDate = `Ultimo accesso oggi alle ${nowHH}`;
+              this.contactActive.messages.push({
+                date: now,
+                message: 'Ok',
+                status: 'received'
+              });
+            }, 2000)
+          }
+        }
       }, 2000);
-      setTimeout( () => {
-        let now = dayjs().format('D/MM/YYYY HH:mm:ss');
-        let nowHH = dayjs().format('HH:mm:ss');
-        this.contactAccess = `Ultimo accesso oggi alle ${nowHH}`
-        this.contactActive.messages.push({
-          date: now,
-          message: 'Ok',
-          status: 'received'
-        });
-      }, 4000)
     }
   },
+  mounted() {
+    for ( index in this.contacts ) {
+      this.contacts[index].accessDate = 'offline';
+    }
+  }
 })
