@@ -82,9 +82,9 @@ const app = new Vue({
             ],
         },
     ],
-    contactActive: null,
+    activeIndex: null,
     chatMsgInput: '',
-    activeIndex: null
+    contactActive: null,
   },
   methods: {
     setActive(index) {
@@ -109,23 +109,19 @@ const app = new Vue({
     },
     receiveMsg() {
       setTimeout( () => {
-        for ( index in this.contacts ) {
-          if ( this.contactActive.name == this.contacts[index].name ) {
-            this.contacts[index].accessDate = 'Sta scrivendo...';
-            this.activeIndex = index;
-            setTimeout( () => {
-              let now = dayjs().format('D/MM/YYYY HH:mm:ss');
-              let nowHH = dayjs().format('HH:mm:ss');
-              this.contacts[this.activeIndex].accessDate = `Ultimo accesso oggi alle ${nowHH}`;
-              this.contactActive.messages.push({
-                date: now,
-                message: 'Ok',
-                status: 'received'
-              });
-            }, 2000)
-          }
-        }
+        this.contacts[this.activeIndex].accessDate = 'Sta scrivendo...';
+        this.$forceUpdate();
       }, 2000);
+      setTimeout( () => {
+        let now = dayjs().format('D/MM/YYYY HH:mm:ss');
+        let nowHH = dayjs().format('HH:mm:ss');
+        this.contacts[this.activeIndex].accessDate = `Ultimo accesso oggi alle ${nowHH}`;
+        this.contactActive.messages.push({
+          date: now,
+          message: 'Ok',
+          status: 'received'
+        });
+      }, 4000);
     }
   },
   mounted() {
