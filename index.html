@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
   <title>Document</title>
 </head>
@@ -63,7 +64,7 @@
         </div>
         <div v-if="contactActive != null" class="message-bar">
           <i class="btn btn--msg-bar far fa-smile"></i>
-          <input class="user-msg" type="text" name="user-msg" placeholder="Scrivi un messaggio" value="">
+          <input v-on:keydown.enter="sendMsg()" class="user-msg" type="text" name="user-msg" placeholder="Scrivi un messaggio" v-model="chatMsgInput" value="">
           <i class="btn btn--msg-bar fas fa-microphone"></i>
         </div>
       </main>

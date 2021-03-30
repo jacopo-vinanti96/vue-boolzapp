@@ -82,7 +82,8 @@ const app = new Vue({
             ],
         },
     ],
-    contactActive: null
+    contactActive: null,
+    chatMsgInput: ''
   },
   methods: {
     setActive(index) {
@@ -94,6 +95,13 @@ const app = new Vue({
         contactBoxes[index].classList.add('active');
       }
       this.contactActive = this.contacts[index];
+    },
+    sendMsg() {
+      this.contactActive.messages.push({
+        date: dayjs().format('D/MM/YYYY HH:mm:ss'),
+        message: this.chatMsgInput,
+        status: 'sent'
+      })
     }
   },
 })
