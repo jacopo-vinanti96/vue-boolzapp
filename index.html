@@ -34,10 +34,11 @@
         </div>
         <div class="aside__contact-search">
           <label for="search-bar" class="btn btn--search-bar"><i class="fas fa-search"></i></label>
-          <input id="search-bar" class="search-input text--sub" type="text" name="search-bar" placeholder="Cerca o inizia una nuova chat" value="">
+          <input id="search-bar" class="search-input text--sub" type="text" name="search-bar" placeholder="Cerca o inizia una nuova chat"
+          v-model="searchVal" @keyup="searchContact()" value="">
         </div>
         <div class="aside__contacts">
-          <div v-for="(contact, i) in contacts" @click="setActive(i)" class="contact-box" v-bind:class="{'active': contactActive == contacts[i]}">
+          <div v-for="(contact, i) in contacts" v-show="contact.visible" @click="setActive(i)" class="contact-box" v-bind:class="{'active': contactActive == contacts[i]}">
             <img class="contact-img" v-bind:src="'img/avatar' + contact.avatar + '.jpg'" v-bind:alt="contact.name">
             <span>{{contact.name}}</span>
           </div>

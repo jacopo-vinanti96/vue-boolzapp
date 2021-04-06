@@ -84,8 +84,10 @@ const app = new Vue({
     ],
     chatMsgInput: '',
     contactActive: null,
+    searchVal: '',
   },
   methods: {
+
     randomNum(min, max) {
       let random = Math.floor( Math.random() * (max - min + 1) ) + min;
         if ( random < 10 ) {
@@ -93,12 +95,42 @@ const app = new Vue({
         }
       return random;
     },
+
     searchContact() {
-      console.log(this.searchVal);
+      for ( const obj in this.contacts ) {
+        let contact = this.contacts[obj];
+        contact.visible = true;
+        let char = 0;
+        let cycle = true;
+        if ( contact.name.length < this.searchVal.length ) {
+          contact.visible = false;
+          cycle = false;
+        }
+        while ( this.searchVal.length > 0 && char < contact.name.length && cycle == true ) {
+          if ( contact.name[char].toLowerCase() == this.searchVal[0].toLowerCase() ) {
+            if ( this.searchVal.length > 1 ) {
+              let i = 1;
+              while ( i < this.searchVal.length && cycle == true ) {
+                if ( contact.name[char + i] == undefined || contact.name[char + i].toLowerCase() != this.searchVal[i].toLowerCase() ) {
+                  contact.visible = false;
+                  cycle = false;
+                }
+                i++
+              }
+            }
+            cycle = false;
+          } else if ( char + 1 == contact.name.length ) {
+            contact.visible = false;
+          }
+          char++;
+        }
+      }
     },
+
     setActive(index) {
       this.contactActive = this.contacts[index];
     },
+
     sendMsg() {
       if ( this.chatMsgInput.length > 0 ) {
         this.contactActive.messages.push({
@@ -110,6 +142,7 @@ const app = new Vue({
         this.receiveMsg();
       }
     },
+
     receiveMsg() {
       let tempContact = this.contactActive;
       setTimeout( () => {
@@ -128,6 +161,7 @@ const app = new Vue({
       }, 4000);
     }
   },
+
   mounted() {
     let nowHH = parseInt( dayjs().format('HH') );
     let nowMM = parseInt( dayjs().format('mm') );
