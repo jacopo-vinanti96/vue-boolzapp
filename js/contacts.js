@@ -100,13 +100,15 @@ const app = new Vue({
       this.contactActive = this.contacts[index];
     },
     sendMsg() {
-      this.contactActive.messages.push({
-        date: dayjs().format('D/MM/YYYY HH:mm:ss'),
-        message: this.chatMsgInput,
-        status: 'sent'
-      });
-      this.chatMsgInput = '';
-      this.receiveMsg();
+      if ( this.chatMsgInput.length > 0 ) {
+        this.contactActive.messages.push({
+          date: dayjs().format('D/MM/YYYY HH:mm:ss'),
+          message: this.chatMsgInput,
+          status: 'sent'
+        });
+        this.chatMsgInput = '';
+        this.receiveMsg();
+      }
     },
     receiveMsg() {
       let tempContact = this.contactActive;
