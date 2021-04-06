@@ -30,26 +30,26 @@
   clear: both;
 }
 
-.text--sub {
-  font-size: 14px;
-  font-weight: 500;
+.text--contact-access,
+.text--msg-date {
+  color: #61696C;
 }
 
-.text--contact-access {
-  color: #61696C;
+.text--msg-date {
+  font-size: 10px;
+  font-weight: 500;
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
 }
 
 .text--notifications {
   color: #466B7C;
 }
 
-.text--msg-date {
-  color: #61696C;
-  font-size: 10px;
+.text--sub {
+  font-size: 14px;
   font-weight: 500;
-  position: absolute;
-  bottom: 3px;
-  right: 3px;
 }
 
 /* BODY */
@@ -124,7 +124,6 @@
 
 .aside__contact-search {
   display: flex;
-  height: 40px;
   padding: 5px;
   background-color: #F3EEEA;
 }
@@ -140,7 +139,7 @@
   background-color: white;
 }
 
-.search-input {
+#search-bar {
   width: 100%;
   font-size: 15px;
   padding: 0 6px;
@@ -158,6 +157,7 @@
 
 .contact-box {
   padding: 10px;
+  cursor: pointer;
 }
 
 .contact-box:not(:last-child){
